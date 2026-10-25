@@ -1,0 +1,6 @@
+record_type,name,slug,type,weapon_slug,rarity_slug,collection_slug,description,case_slug,item_slug,drop_group,is_special,min_float,max_float,has_stattrak,has_souvenir
+item,Imported Ferry Skin,imported-ferry-skin,skin,ak-47,classified,harbor-collection,Imported demo row,,,,,,,,,
+item,Imported Ferry Skin,imported-ferry-skin,skin,ak-47,classified,harbor-collection,Updated demo row,,,,,,,,,
+item,Broken Row,,skin,missing-weapon,classified,,,,,,,,,,
+case,Imported Sample Case,imported-sample-case,case,,,,,,,Demo case import,,,,,
+case_content,,,,,,, ,imported-sample-case,imported-ferry-skin,standard,0,,,
