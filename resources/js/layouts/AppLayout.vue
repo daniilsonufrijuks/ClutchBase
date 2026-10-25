@@ -59,6 +59,11 @@ function openResult(href: string) {
     searchOpen.value = false;
     router.visit(href);
 }
+
+function logout() {
+    open.value = false;
+    router.post('/logout');
+}
 </script>
 
 <template>
@@ -73,7 +78,10 @@ function openResult(href: string) {
                 </nav>
                 <div class="ml-auto flex items-center gap-2">
                     <button type="button" class="rounded border border-line px-3 py-1.5 text-sm" @click="searchOpen = true">Search</button>
-                    <Link v-if="page.props.auth.user" href="/account" class="hidden text-sm text-muted sm:inline">{{ page.props.auth.user.name }}</Link>
+                    <template v-if="page.props.auth.user">
+                        <Link href="/account" class="hidden text-sm text-muted sm:inline">{{ page.props.auth.user.name }}</Link>
+                        <button type="button" class="rounded border border-line px-3 py-1.5 text-sm" @click="logout">Log out</button>
+                    </template>
                     <template v-else>
                         <Link href="/login" class="text-sm text-muted">Log in</Link>
                         <Link href="/register" class="rounded bg-brass px-3 py-1.5 text-sm text-ink">Register</Link>
@@ -85,6 +93,7 @@ function openResult(href: string) {
                 <Link v-for="link in links" :key="link.href" :href="link.href" class="block py-2 text-sm" @click="open = false">{{ link.label }}</Link>
                 <Link v-if="!page.props.auth.user" href="/login" class="block py-2 text-sm" @click="open = false">Log in</Link>
                 <Link v-if="!page.props.auth.user" href="/register" class="block py-2 text-sm" @click="open = false">Register</Link>
+                <button v-else type="button" class="block py-2 text-left text-sm" @click="logout">Log out</button>
             </nav>
         </header>
         <div v-if="page.props.flash.success" class="mx-auto mt-4 max-w-6xl px-4">
